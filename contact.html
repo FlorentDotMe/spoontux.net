@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Spoontux.net</title>
+ 
+<link rel="stylesheet" href="css/main.css" type="text/css" />
+<script type="text/javascript" src="include/spoon.js"></script>
+<script type="text/javascript" src="include/base64.js"></script>
+<script type="text/javascript">
+    window.addEventListener("load",(function() {
+        document.getElementById("email64").innerHTML += email64;
+        document.getElementById("email").innerHTML += "> start decoding ..."+"<br/>";
+        window.setTimeout(function () { document.getElementById("email").innerHTML += "> "+decodeEmail(email64) },1000);
+    }),false);
+</script>
+</head>
+
+<!-- The class need to be declared -->
+<body id="index" class="contact">
+
+<!-- Include header common file -->
+<!--#include virtual="include/header.html" -->
+
+<!-- Content of this page -->
+<aside id="featured" class="body"><article>
+<h5>Email:</h5>
+<pre id='email64' class="code">base64: </pre>
+<pre><div id="email"></div></pre>
+<br/>
+<h5>GPG public key: <a href="security/spoontux.key">download</a></h5>
+</article></aside>
+
+<!-- Include extra and footer common files -->
+<!--#include virtual="include/extra.html" -->
+<!--#include virtual="include/footer.html" -->
+</body>
+</html>
