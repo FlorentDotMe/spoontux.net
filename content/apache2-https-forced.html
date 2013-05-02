@@ -1,0 +1,23 @@
+<!-- Content of this page -->
+<aside id="featured" class="body"><article>
+    <figure>
+        <img src="images/logo.png" height="100px" width="100px" alt="Spoontux.net" />
+    </figure>
+    <hgroup>
+        <h2><a name="apache2-https-forced" href="articles#apache2-https-forced">How to force HTTPS requests on Apache2</a></h2>
+    </hgroup>
+    <p>If you don't know how to configure SSL into your Apache2 server, please refer to <a href="article#apache2-ssl">this article</a></p>
+    <p>Once we have SSL functionnality available, it can be useful to protect all our visitors exchanges fastly and automatically using integrated Apache2 functionnalities. Indeed, Apache2 has the famous <b>rewrite</b> module, and this one is able to check the headers values or to verify which protocol is used.</p>
+    <p>A simply way is to apply a permanent redirection. But here, we will use a rewrite rule usable for all configurations regardless destination URL. To do that just add these lines into your main configuration file (ex: /etc/apache2/apache2.conf) and reload your Apache2 web service.</p>
+
+<pre class=code>
+<IfModule mod_ssl.c>
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  </IfModule>
+</IfModule>
+</pre>
+
+</article></aside>
